@@ -1,12 +1,21 @@
 package com.Hewlett.Packard.Software.Engineering;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@GetMapping("/employees")
+@RequestMapping("/employees")
 public class EmployeeController {
-    public EmployeeService getEmployees(){
-        return getEmployees();
+
+    private final EmployeeManager employeeManager;
+
+    public EmployeeController(EmployeeManager employeeManager) {
+        this.employeeManager = employeeManager;
+    }
+
+    @GetMapping
+    public Employees getEmployees(){
+        return employeeManager.getAllEmployees();
     }
 }

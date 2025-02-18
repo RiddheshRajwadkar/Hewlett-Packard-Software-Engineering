@@ -3,7 +3,7 @@ package com.Hewlett.Packard.Software.Engineering;
 import com.sun.jdi.PrimitiveValue;
 
 public class Employee {
-    private String id;
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -12,7 +12,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String id, String firstName, String lastName, String email, String title) {
+    public Employee(long id, String firstName, String lastName, String email, String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,11 +20,11 @@ public class Employee {
         this.title = title;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
