@@ -1,21 +1,26 @@
 package com.Hewlett.Packard.Software.Engineering;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping
 public class EmployeeController {
 
-    private final EmployeeManager employeeManager;
+    @Autowired
+    public EmployeeManager employeeManager;
 
-    public EmployeeController(EmployeeManager employeeManager) {
-        this.employeeManager = employeeManager;
+    @GetMapping("/allEmployee")
+    public List<Employee> getEmployees(){
+        return employeeManager.getAllEmployees();
     }
 
-    @GetMapping
-    public Employees getEmployees(){
-        return employeeManager.getAllEmployees();
+    @PostMapping("/addEmployee")
+    public void addEmployee(@RequestBody Employee employee){
+        System.out.println("Received Employee Data: " + employee);
+        employeeManager.addEmployee(employee);
     }
 }

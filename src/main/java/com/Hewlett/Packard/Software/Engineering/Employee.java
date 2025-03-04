@@ -1,10 +1,16 @@
 package com.Hewlett.Packard.Software.Engineering;
 
-import com.sun.jdi.PrimitiveValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
 
 public class Employee {
-    private long id;
+
+    @Id
+    private String employee_id;
+
+    @JsonProperty("first_name")
     private String firstName;
+    @JsonProperty("last_name")
     private String lastName;
     private String email;
     private String title;
@@ -12,20 +18,20 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(long id, String firstName, String lastName, String email, String title) {
-        this.id = id;
+    public Employee(String id, String firstName, String lastName, String email, String title) {
+        this.employee_id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.title = title;
     }
 
-    public long getId() {
-        return id;
+    public String getId() {
+        return employee_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(String employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getFirstName() {
@@ -63,7 +69,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id='" + id + '\'' +
+                "id='" + employee_id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
